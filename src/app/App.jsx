@@ -1,5 +1,5 @@
 //config
-import { RouteProvider } from './config/RouteConfig/ui/RouteProvider';
+import { RouteProvider } from './config/routeConfig/ui/RouteProvider';
 //styles
 import styles from './App.module.scss';
 

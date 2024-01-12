@@ -10,13 +10,17 @@ import {
   getHomeRoute,
   getProfileRoute
 } from '@/shared/libs/constants/routes';
+//layout
+import { HeaderLayout } from '../../../layouts/HeaderLayout/HeaderLayout';
 
 export const RouteProvider = ({}) => {
   return (
     <Routes>
-      <Route path={getHomeRoute()} element={<HomePage />} />
-      <Route path={getProfileRoute()} element={<ProfilePage />} />
-      <Route path={getAboutRoute()} element={<AboutPage />} />
+      <Route element={<HeaderLayout />}>
+        <Route path={getHomeRoute()} element={<HomePage />} />
+        <Route path={getProfileRoute()} element={<ProfilePage />} />
+        <Route path={getAboutRoute()} element={<AboutPage />} />
+      </Route>
     </Routes>
   );
 };
