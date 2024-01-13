@@ -1,7 +1,7 @@
 //react
 import { NavLink as RouterNavLink } from 'react-router-dom';
 //styles
-import styles from './NavLink.module.scss'
+import styles from './NavLink.module.scss';
 
 export const NavLink = ({ to, text }) => {
   return (

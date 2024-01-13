@@ -1,10 +1,10 @@
 //styles
-import styles from './Input.module.scss'
+import styles from './Input.module.scss';
 
 export const Input = ({ onChange, type, disabled, value, placeholder }) => {
   return (
     <input
-	 	className={styles.Input}
+      className={styles.Input}
       onChange={onChange}
       type={type}
       disabled={disabled}
