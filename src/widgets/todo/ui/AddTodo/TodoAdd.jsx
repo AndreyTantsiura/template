@@ -14,6 +14,8 @@ export const TodoAdd = ({}) => {
   const [todoText, setTodoText] = useState('');
   const { addTodo } = useTodoContext();
 
+  const isAddTodoButtonDisabled = !todoText.trim();
+
   const onTodoTextChange = (e) => {
     setTodoText(e.target.value);
   };
@@ -38,7 +40,9 @@ export const TodoAdd = ({}) => {
         value={todoText}
         placeholder='write todo'
       />
-      <Button onClick={onAddClickTodo}>Add Todo</Button>
+      <Button onClick={onAddClickTodo} disabled={isAddTodoButtonDisabled}>
+        Add Todo
+      </Button>
     </div>
   );
 };

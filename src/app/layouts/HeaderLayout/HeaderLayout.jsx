@@ -7,9 +7,9 @@ import styles from './HeaderLayout.module.scss';
 
 export const HeaderLayout = ({}) => {
   return (
-    <dic className={styles.HeaderLayout}>
+    <div className={styles.HeaderLayout}>
       <Header />
       <Outlet />
-    </dic>
+    </div>
   );
 };

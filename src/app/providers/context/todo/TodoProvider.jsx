@@ -16,8 +16,15 @@ export const TodoProvider = ({ children }) => {
     setTodos(todosWithoutTodo);
   };
 
+  const updateTodo = (updatedTodo) => {
+    const todosWithUpdateTodod = todos.map((todo) => {
+      return todo.id === updatedTodo.id ? { ...updatedTodo } : todo;
+    });
+    setTodos(todosWithUpdateTodod);
+  };
+
   return (
-    <TodoContext.Provider value={{todos, addTodo, deleteTodo}}>
+    <TodoContext.Provider value={{ todos, addTodo, deleteTodo, updateTodo }}>
       {children}
     </TodoContext.Provider>
   );

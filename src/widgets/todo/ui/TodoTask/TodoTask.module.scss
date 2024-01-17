@@ -2,4 +2,38 @@
   padding: 10px;
   border: 1px solid black;
   border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icons {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+
+  .editIcon {
+    cursor: pointer;
+    &:hover {
+      color: blue;
+    }
+  }
+
+  .deleteIcon {
+    cursor: pointer;
+    &:hover {
+      color: red;
+    }
+  }
+}
+
+.checkIcon {
+  cursor: pointer;
+  &:hover {
+    color: green;
+  }
+}
+
+.completed {
+  color: green;
 }
