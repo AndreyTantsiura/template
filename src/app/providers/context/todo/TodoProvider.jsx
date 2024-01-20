@@ -17,14 +17,21 @@ export const TodoProvider = ({ children }) => {
   };
 
   const updateTodo = (updatedTodo) => {
-    const todosWithUpdateTodod = todos.map((todo) => {
+    const todosWithUpdateTodo = todos.map((todo) => {
       return todo.id === updatedTodo.id ? { ...updatedTodo } : todo;
     });
-    setTodos(todosWithUpdateTodod);
+    setTodos(todosWithUpdateTodo);
   };
 
   return (
-    <TodoContext.Provider value={{ todos, addTodo, deleteTodo, updateTodo }}>
+    <TodoContext.Provider
+      value={{
+        todos,
+        addTodo,
+        deleteTodo,
+        updateTodo
+      }}
+    >
       {children}
     </TodoContext.Provider>
   );

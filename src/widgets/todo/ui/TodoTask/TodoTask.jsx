@@ -6,6 +6,7 @@ import { FaCheck } from 'react-icons/fa';
 import { useTodoContext } from '@/shared/libs/hooks';
 //shared ui
 import { Input } from '@/shared/ui/Input';
+import { Checkbox } from '@/shared/ui/Checkbox';
 //styles
 import styles from './TodoTask.module.scss';
 
@@ -31,7 +32,7 @@ export const TodoTask = ({ completed, id, text }) => {
   const onUpdateTodoClick = () => {
     const todo = {
       id: id,
-      completed: isEditing,
+      completed: completed,
       text: editedText
     };
 
@@ -40,17 +41,28 @@ export const TodoTask = ({ completed, id, text }) => {
     setIsEditing(false);
   };
 
+  const onToggleCompleteTodo = () => {
+    const todo = {
+      id: id,
+      text: text,
+      completed: !completed
+    };
+
+    updateTodo(todo);
+  };
+
   return (
     <div className={styles.TodoTask}>
       {!isEditing ? (
         <>
           <div>{text}</div>
           <div className={styles.icons}>
-            {!completed ? (
-              <MdEdit className={styles.editIcon} onClick={onEditCheckClick} />
-            ) : (
-              <FaCheck className={styles.completed} />
-            )}
+            <Checkbox
+              className={styles.checkbox}
+              isChecked={completed}
+              onChange={onToggleCompleteTodo}
+            />
+            <MdEdit className={styles.editIcon} onClick={onEditCheckClick} />
             <MdDelete className={styles.deleteIcon} onClick={onDeleteClick} />
           </div>
         </>
