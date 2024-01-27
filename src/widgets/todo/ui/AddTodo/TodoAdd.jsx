@@ -1,18 +1,21 @@
 //react
 import { useState } from 'react';
+//react-redux
+import { useDispatch } from 'react-redux';
+//actions
+import { addTodo } from '@/entities/todo/model/slice';
 //libs
 import { v4 as createId } from 'uuid';
-//hooks
-import { useTodoContext } from '@/shared/libs/hooks/useTodoContext';
 //styles
 import styles from './TodoAdd.module.scss';
 //shared ui
 import { Input } from '@/shared/ui/Input';
 import { Button } from '@/shared/ui/Button';
 
+
 export const TodoAdd = ({}) => {
+  const dispatch = useDispatch();
   const [todoText, setTodoText] = useState('');
-  const { addTodo } = useTodoContext();
 
   const isAddTodoButtonDisabled = !todoText.trim();
 
@@ -27,7 +30,7 @@ export const TodoAdd = ({}) => {
       completed: false
     };
 
-    addTodo(todo);
+    dispatch(addTodo(todo));
 
     setTodoText('');
   };

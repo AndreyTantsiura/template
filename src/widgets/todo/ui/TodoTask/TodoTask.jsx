@@ -2,8 +2,10 @@
 import { useState } from 'react';
 import { MdDelete, MdEdit } from 'react-icons/md';
 import { FaCheck } from 'react-icons/fa';
-//hooks
-import { useTodoContext } from '@/shared/libs/hooks';
+//react-redux
+import { useDispatch } from 'react-redux';
+//selectors
+import { deleteTodo, updateTodo } from '@/entities/todo/model/slice';
 //shared ui
 import { Input } from '@/shared/ui/Input';
 import { Checkbox } from '@/shared/ui/Checkbox';
@@ -11,7 +13,8 @@ import { Checkbox } from '@/shared/ui/Checkbox';
 import styles from './TodoTask.module.scss';
 
 export const TodoTask = ({ completed, id, text }) => {
-  const { deleteTodo, updateTodo } = useTodoContext();
+  const dispatch = useDispatch();
+
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState(text);
 
@@ -22,7 +25,7 @@ export const TodoTask = ({ completed, id, text }) => {
   };
 
   const onDeleteClick = () => {
-    deleteTodo(id);
+    dispatch(deleteTodo(id));
   };
 
   const onEditedTextChange = (e) => {
@@ -36,7 +39,7 @@ export const TodoTask = ({ completed, id, text }) => {
       text: editedText
     };
 
-    updateTodo(todo);
+    dispatch(updateTodo(todo));
 
     setIsEditing(false);
   };
@@ -48,7 +51,7 @@ export const TodoTask = ({ completed, id, text }) => {
       completed: !completed
     };
 
-    updateTodo(todo);
+    dispatch(updateTodo(todo));
   };
 
   return (

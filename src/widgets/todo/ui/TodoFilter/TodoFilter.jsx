@@ -5,16 +5,18 @@ import {
   MdCheckBox,
   MdOutlineCheckBoxOutlineBlank
 } from 'react-icons/md';
-//styles
-import styles from './TodoFilter.module.scss';
+//react-redux
+import { useSelector } from 'react-redux';
+//selector
+import { getTodoList } from '@/entities/todo/model/selector/getTodoList';
 //shared ui
 import { TodoTaskList } from '../TodoTaskList/TodoTaskList';
-//hook
-import { useTodoContext } from '@/shared/libs/hooks/useTodoContext';
+//styles
+import styles from './TodoFilter.module.scss';
 
 export const TodoFilter = ({}) => {
-  const { todos } = useTodoContext();
-const [filteredTodos, setFilteredTodos] = useState(todos)
+  const todos = useSelector(getTodoList);
+  const [filteredTodos, setFilteredTodos] = useState(todos);
 
   useEffect(() => {
     setFilteredTodos(todos);
@@ -40,15 +42,21 @@ const [filteredTodos, setFilteredTodos] = useState(todos)
         <div className={styles.TodoFilter}>
           <MdFilterListOff
             className={styles.checkbox}
-            onClick={() => {todoFilter(null)}}
+            onClick={() => {
+              todoFilter(null);
+            }}
           />
           <MdCheckBox
             className={styles.checkbox}
-            onClick={() => {todoFilter(true)}}
+            onClick={() => {
+              todoFilter(true);
+            }}
           />
           <MdOutlineCheckBoxOutlineBlank
             className={styles.checkbox}
-            onClick={() => {todoFilter(false)}}
+            onClick={() => {
+              todoFilter(false);
+            }}
           />
         </div>
       )}
